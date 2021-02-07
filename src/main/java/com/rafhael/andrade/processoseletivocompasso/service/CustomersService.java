@@ -20,7 +20,7 @@ public class CustomersService {
         if (name.isEmpty()) {
             return repository.findAll();
         }
-        return repository.findByName(name.toLowerCase());
+        return repository.findByName(name);
     }
 
     public Customer getById(Long id) throws ResponseStatusException {

@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-    @Query(value = "SELECT c FROM Customer c WHERE LOWER(c.name) LIKE CONCAT('%',:name,'%')")
+    @Query("SELECT c FROM Customer c WHERE LOWER(c.name) LIKE LOWER(CONCAT('%',:name,'%'))")
     List<Customer> findByName(@Param("name") String name);
 }
