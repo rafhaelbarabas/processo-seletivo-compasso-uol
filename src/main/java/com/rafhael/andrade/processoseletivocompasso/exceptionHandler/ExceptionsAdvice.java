@@ -1,6 +1,5 @@
-package com.rafhael.andrade.processoseletivocompasso.api;
+package com.rafhael.andrade.processoseletivocompasso.exceptionHandler;
 
-import com.rafhael.andrade.processoseletivocompasso.exceptionHandler.ApiErrorsHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;

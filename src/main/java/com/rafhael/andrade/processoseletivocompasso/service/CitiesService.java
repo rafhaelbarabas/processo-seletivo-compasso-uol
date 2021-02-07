@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CitiesService {
@@ -36,8 +35,9 @@ public class CitiesService {
         return repository.findAll();
     }
 
-    public Optional<City> getById(Long id) {
-        return repository.findById(id);
+    public City getById(Long id) throws ResponseStatusException {
+        return repository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "city not found"));
     }
 
     public City create(City city) throws ResponseStatusException {

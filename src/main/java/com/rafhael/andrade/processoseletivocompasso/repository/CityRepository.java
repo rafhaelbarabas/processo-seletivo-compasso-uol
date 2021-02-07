@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface CityRepository extends JpaRepository<City, Long> {
-
     @Query("SELECT c FROM City c WHERE c.name = :name AND c.state = :state")
     List<City> findByCityAndState(@Param("name") String name, @Param("state") State state);
 
