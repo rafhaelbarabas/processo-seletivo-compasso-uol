@@ -6,7 +6,7 @@ import com.rafhael.andrade.processoseletivocompasso.enums.State;
 import com.rafhael.andrade.processoseletivocompasso.models.City;
 import com.rafhael.andrade.processoseletivocompasso.models.Customer;
 import com.rafhael.andrade.processoseletivocompasso.models.dto.CustomerDto;
-import com.rafhael.andrade.processoseletivocompasso.service.CustomersService;
+import com.rafhael.andrade.processoseletivocompasso.service.CustomerService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -41,21 +41,27 @@ public class CustomersControllerTest {
     private MockMvc mvc;
 
     @MockBean
-    private CustomersService service;
+    private CustomerService service;
 
     private ObjectMapper mapper = new ObjectMapper();
 
     private City createCity() {
-        return new City(1L, "Criciúma", State.SC);
+        return new City.Builder()
+                .id(1L)
+                .name("Criciúma")
+                .state(State.SC)
+                .build();
     }
 
     private Customer createCustomer() {
-        return new Customer(1L,
-                "Rafhael de Andrade Barabas",
-                Gender.M,
-                LocalDate.parse("1994-01-28"),
-                27,
-                createCity());
+        return new Customer.Builder()
+                .id(1L)
+                .name("Rafhael de Andrade Barabas")
+                .gerden(Gender.M)
+                .birthDate(LocalDate.parse("1994-01-28"))
+                .age(27)
+                .city(createCity())
+                .build();
     }
 
     @Test

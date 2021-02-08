@@ -11,7 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @Service
-public class CustomersService {
+public class CustomerService {
 
     @Autowired
     private CustomerRepository repository;
@@ -28,8 +28,8 @@ public class CustomersService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
     }
 
-    public Customer create(Customer costumer) {
-        return repository.save(costumer);
+    public Customer create(Customer customer) {
+        return repository.save(customer);
     }
 
     public Customer update(Long id, CustomerDto custumerDto) {

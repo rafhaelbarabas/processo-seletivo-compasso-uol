@@ -37,37 +37,24 @@ public class Customer {
     private Integer age;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "i_city", foreignKey = @ForeignKey(name="fk_costumer_city"))
+    @JoinColumn(nullable = false, name = "i_city", foreignKey = @ForeignKey(name = "fk_customer_city"))
     private City city;
 
     public Customer() {
     }
 
-    public Customer(Long id, String name, Gender gerden, LocalDate birthDate, Integer age, City city) {
-        this.id = id;
-        this.name = name;
-        this.gerden = gerden;
-        this.birthDate = birthDate;
-        this.age = age;
-        this.city = city;
-    }
-
     @PrePersist
-    public void verifyAge(){
+    public void verifyAge() {
         LocalDate birthDatePersist = getBirthDate();
         Integer agePersist = getAge();
 
-        if(isNull(agePersist)){
+        if (isNull(agePersist)) {
             setAge(LocalDate.now().getYear() - birthDatePersist.getYear());
         }
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -82,16 +69,8 @@ public class Customer {
         return gerden;
     }
 
-    public void setGarden(Gender gerden) {
-        this.gerden = gerden;
-    }
-
     public LocalDate getBirthDate() {
         return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
     }
 
     public Integer getAge() {
@@ -106,7 +85,57 @@ public class Customer {
         return city;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public static class Builder {
+
+        private Long id;
+        private String name;
+        private Gender gerden;
+        private LocalDate birthDate;
+        private Integer age;
+        private City city;
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder gerden(Gender gerden) {
+            this.gerden = gerden;
+            return this;
+        }
+
+        public Builder birthDate(LocalDate birthDate) {
+            this.birthDate = birthDate;
+            return this;
+        }
+
+        public Builder age(Integer age) {
+            this.age = age;
+            return this;
+        }
+
+        public Builder city(City city) {
+            this.city = city;
+            return this;
+        }
+
+        public Customer build() {
+            return new Customer(this);
+        }
+
+    }
+
+    private Customer(Customer.Builder builder) {
+        id = builder.id;
+        name = builder.name;
+        gerden = builder.gerden;
+        birthDate = builder.birthDate;
+        age = builder.age;
+        city = builder.city;
     }
 }

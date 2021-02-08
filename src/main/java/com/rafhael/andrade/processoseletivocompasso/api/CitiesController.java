@@ -1,7 +1,7 @@
 package com.rafhael.andrade.processoseletivocompasso.api;
 
 import com.rafhael.andrade.processoseletivocompasso.models.City;
-import com.rafhael.andrade.processoseletivocompasso.service.CitiesService;
+import com.rafhael.andrade.processoseletivocompasso.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import java.util.List;
 public class CitiesController {
 
     @Autowired
-    private CitiesService service;
+    private CityService service;
 
     @GetMapping
     public List<City> getAll(
