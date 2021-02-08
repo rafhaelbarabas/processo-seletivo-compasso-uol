@@ -37,7 +37,7 @@ public class Customer {
     private Integer age;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "i_city", foreignKey = @ForeignKey(name = "fk_costumer_city"))
+    @JoinColumn(nullable = false, name = "i_city", foreignKey = @ForeignKey(name = "fk_customer_city"))
     private City city;
 
     public Customer() {

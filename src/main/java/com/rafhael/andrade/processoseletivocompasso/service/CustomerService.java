@@ -28,8 +28,8 @@ public class CustomerService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
     }
 
-    public Customer create(Customer costumer) {
-        return repository.save(costumer);
+    public Customer create(Customer customer) {
+        return repository.save(customer);
     }
 
     public Customer update(Long id, CustomerDto custumerDto) {
