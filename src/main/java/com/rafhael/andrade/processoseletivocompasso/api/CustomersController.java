@@ -2,7 +2,7 @@ package com.rafhael.andrade.processoseletivocompasso.api;
 
 import com.rafhael.andrade.processoseletivocompasso.models.Customer;
 import com.rafhael.andrade.processoseletivocompasso.models.dto.CustomerDto;
-import com.rafhael.andrade.processoseletivocompasso.service.CustomersService;
+import com.rafhael.andrade.processoseletivocompasso.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.List;
 public class CustomersController {
 
     @Autowired
-    private CustomersService service;
+    private CustomerService service;
 
     @GetMapping
     public List<Customer> getAll(@RequestParam(value = "name", required = false, defaultValue = "") String name) {

@@ -3,7 +3,7 @@ package com.rafhael.andrade.processoseletivocompasso.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rafhael.andrade.processoseletivocompasso.enums.State;
 import com.rafhael.andrade.processoseletivocompasso.models.City;
-import com.rafhael.andrade.processoseletivocompasso.service.CitiesService;
+import com.rafhael.andrade.processoseletivocompasso.service.CityService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -38,12 +38,16 @@ public class CitiesControllerTest {
     private MockMvc mvc;
 
     @MockBean
-    private CitiesService service;
+    private CityService service;
 
     private ObjectMapper mapper = new ObjectMapper();
 
     private City createCity() {
-        return new City(1L, "Criciúma", State.SC);
+        return new City.Builder()
+                .id(1L)
+                .name("Criciúma")
+                .state(State.SC)
+                .build();
     }
 
     @Test
